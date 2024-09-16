@@ -163,3 +163,42 @@ create table Account(
 select * from Category;
 select * from Product;
 select * from Account;
+
+---------------------------
+
+Insert into Category(name,status) value ("Áo",1);
+Insert into Category(name,status) value ("Áo",2);
+Insert into Product(name,price,sale_price,category_id) value ("Áo khoác",100,70,1);
+Insert into Product(name,price,sale_price,category_id) value ("Áo 2",115,70,2);
+-- Nhóm lệnh DML
+-- INSERT
+-- UPDATE
+-- Cập nhật tên của bảng ghi có id = 1 thành "Áo xịn"
+update Product set name ="Áo xịn" where id=1;
+
+update Product set price = 100 where price < 200;
+update Product set price = 180 where id = 2;
+
+-- Cập nhật giá tiền của sản phẩm có giá nhỏ hơn 200 về 10% so với giá hiện tại
+update Product set price = price - (price*0.1) where price<200;
+
+drop table Product;
+
+-- Cập nhật tên của sp thành khoác và giá thành 210 với sp có id=2
+update Product set name = "Khoác", price = 210 where id=2;
+
+select * from Product;
+
+-- DELETE
+delete from Product where id=2;
+-- không có từ khóa where thì bảng sẽ bị xóa toàn bộ dữ liệu
+
+-- Xóa tất cả sp có danh mục = 2
+delete from Product where Category_id = 2;
+
+-- SELECT
+-- Lấy tất cả bảng ghi theo tất cả trường của bảng
+select * from Product;
+
+-- Lấy tất cả bảng ghi theo trường lựa chọn
+select name,price from Product;
